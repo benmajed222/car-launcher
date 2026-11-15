@@ -462,7 +462,7 @@ class _OfflineMapWidgetState extends ConsumerState<OfflineMapWidget> with Ticker
   Widget _buildMapActionButton({
     required IconData icon,
     required Color color,
-    required String tooltip,
+    String? tooltip,
     required VoidCallback onTap,
   }) {
     return Material(
