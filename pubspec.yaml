@@ -1,0 +1,48 @@
+name: car_launcher
+description: "Production-grade Automotive Car Launcher for Android Head-Unit (XY Auto T100)"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.0 <4.0.0'
+  flutter: ">=3.16.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # State Management
+  flutter_riverpod: ^2.5.1
+
+  # Islamic Offline Prayer Times (Pure Astronomical Calculations)
+  adhan: ^2.1.0
+
+  # Offline Navigation & Interactive Maps
+  flutter_map: ^6.1.0
+  latlong2: ^0.9.1
+
+  # Storage & Preferences
+  shared_preferences: ^2.2.3
+  path_provider: ^2.1.2
+
+  # Hardware Permissions
+  permission_handler: ^11.3.1
+
+  # UI & Styling
+  google_fonts: ^6.2.1
+  flutter_svg: ^2.0.10+1
+  intl: ^0.19.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/maps/
