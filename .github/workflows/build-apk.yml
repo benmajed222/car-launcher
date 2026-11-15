@@ -27,12 +27,8 @@ jobs:
           channel: 'stable'
           cache: true
 
-      - name: Configure Gradle Wrapper
-        run: |
-          cd android
-          gradle wrapper --gradle-version 8.3
-          chmod +x gradlew
-          cd ..
+      - name: Make Gradlew Executable
+        run: chmod +x android/gradlew
 
       - name: Get Dependencies
         run: flutter pub get
