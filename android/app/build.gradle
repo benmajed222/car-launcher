@@ -24,8 +24,7 @@ if (flutterVersionName == null) {
 
 android {
     namespace "com.aam.carlauncher"
-    compileSdk 33
-    ndkVersion = flutter.ndkVersion
+    compileSdk 34
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
