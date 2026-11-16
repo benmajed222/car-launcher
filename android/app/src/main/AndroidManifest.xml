@@ -50,7 +50,7 @@
 
     <application
         android:label="BenMajed Cockpit"
-        android:name="${applicationName}"
+        android:name="android.app.Application"
         android:icon="@mipmap/ic_launcher"
         android:requestLegacyExternalStorage="true"
         android:hardwareAccelerated="true"
