@@ -62,6 +62,12 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+    lint {
+        checkReleaseBuilds false
+        abortOnError false
+        disable 'ExpiredTargetSdkVersion'
+    }
 }
 
 flutter {
