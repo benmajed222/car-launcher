@@ -38,15 +38,28 @@ class MainActivity : FlutterActivity() {
     private lateinit var audioManager: AudioManager
     private var adhanPlayer: MediaPlayer? = null
 
+    private fun ensureHelpersInitialized() {
+        if (!::carPlayHelper.isInitialized) {
+            carPlayHelper = CarPlayLauncherHelper(this)
+        }
+        if (!::obdService.isInitialized) {
+            obdService = ObdBluetoothService(this)
+        }
+        if (!::gpsTimeHelper.isInitialized) {
+            gpsTimeHelper = GpsTimeSyncHelper(this)
+        }
+        if (!::audioManager.isInitialized) {
+            audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        ensureHelpersInitialized()
         super.onCreate(savedInstanceState)
-        carPlayHelper = CarPlayLauncherHelper(this)
-        obdService = ObdBluetoothService(this)
-        gpsTimeHelper = GpsTimeSyncHelper(this)
-        audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
     }
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
+        ensureHelpersInitialized()
         super.configureFlutterEngine(flutterEngine)
 
         val binaryMessenger = flutterEngine.dartExecutor.binaryMessenger
@@ -273,7 +286,11 @@ class MainActivity : FlutterActivity() {
     override fun onDestroy() {
         super.onDestroy()
         stopAdhanAudio()
-        obdService.stopService()
-        gpsTimeHelper.stopGpsListening()
+        if (::obdService.isInitialized) {
+            obdService.stopService()
+        }
+        if (::gpsTimeHelper.isInitialized) {
+            gpsTimeHelper.stopGpsListening()
+        }
     }
 }
